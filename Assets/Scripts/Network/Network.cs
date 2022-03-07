@@ -7,6 +7,11 @@ public class Network : MonoBehaviourPunCallbacks
 {
     private Canvases _canvases;
 
+    public static int GetNumberPlayers()
+    {
+        return PhotonNetwork.PlayerList.Length;
+    }
+
     public void Initialize(Canvases canvases)
     {
         _canvases = canvases;
@@ -18,9 +23,9 @@ public class Network : MonoBehaviourPunCallbacks
         base.photonView.RPC("RPCChangeUserData", RpcTarget.AllBufferedViaServer, PhotonNetwork.LocalPlayer, listing, title, description);
     }
 
-    public void RunMethodRPCSetDescriptionData(DescriptionCanvas.BunkerDescription bunkerDescription, DescriptionCanvas.BunkerResources bunkerResources)
+    public void RunMethodRPCSetDescriptionData(string bunkerDescriptionJson, string bunkerResourcesJson)
     {
-        base.photonView.RPC("RPCSetDescriptionData", RpcTarget.AllBufferedViaServer, bunkerDescription, bunkerResources);
+        base.photonView.RPC("RPCSetDescriptionData", RpcTarget.AllBufferedViaServer, bunkerDescriptionJson, bunkerResourcesJson);
     }
 
     public static void LeaveRoom() => PhotonNetwork.LeaveRoom();
@@ -39,13 +44,8 @@ public class Network : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void RPCSetDescriptionData(DescriptionCanvas.BunkerDescription bunkerDescription, DescriptionCanvas.BunkerResources bunkerResources)
+    private void RPCSetDescriptionData(string bunkerDescriptionJson, string bunkerResourcesJson)
     {
-        _canvases.GameCanvas.DescriptionCanvas.Instatiate(bunkerDescription, bunkerResources);
-/*        _canvases.GameCanvas.DescriptionCanvas.BunkerDescription = Instantiate(_canvases.GameCanvas.DescriptionCanvas.DescriptionContent, _canvases.GameCanvas.DescriptionCanvas.ContentParent);
-        _canvases.GameCanvas.DescriptionCanvas.BunkerDescription.SetInfo(bunkerDescription[0].ToString(), bunkerDescription[1].ToString(), _canvases.GameCanvas.DescriptionCanvas.GetNumberFreePlaces(PhotonNetwork.PlayerList.Length));
-
-        _canvases.GameCanvas.DescriptionCanvas.BunkerRecources = Instantiate(_canvases.GameCanvas.DescriptionCanvas.DescriptionContent, _canvases.GameCanvas.DescriptionCanvas.ContentParent);
-        _canvases.GameCanvas.DescriptionCanvas.BunkerRecources.SetInfo(bunkerResourcesFieldDescription);*/
+        _canvases.GameCanvas.DescriptionCanvas.Instatiate(bunkerDescriptionJson, bunkerResourcesJson);
     }
 }

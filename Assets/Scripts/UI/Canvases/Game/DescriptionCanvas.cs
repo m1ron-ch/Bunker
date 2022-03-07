@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
@@ -5,7 +6,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DescriptionCanvas : MonoBehaviourPunCallbacks
+public class DescriptionCanvas : MonoBehaviour
 {
     public struct BunkerDescription
     {
@@ -46,12 +47,9 @@ public class DescriptionCanvas : MonoBehaviourPunCallbacks
 
     private Data _data;
     private Canvases _canvases;
-    private DescriptionContent _bunkerDescription;
-    private DescriptionContent _bunkerResources;
+    private DescriptionContent _bunkerDescriptionContent;
 
-/*    public DescriptionContent BunkerDescription { get { return _bunkerDescription; }  set { _bunkerDescription = value; } }
-    public DescriptionContent BunkerResources { get { return _bunkerResources; }  set { _bunkerResources = value; } }*/
-    public DescriptionContent DescriptionContent { get { return _descriptionContent; } }
+    public DescriptionContent BunkerDescriptionContent { get { return _bunkerDescriptionContent; } }
     public Transform ContentParent { get { return _contentParent; } }
     public TMP_Text Desciption { get { return _description; } set { _description = value; } }
 
@@ -70,7 +68,6 @@ public class DescriptionCanvas : MonoBehaviourPunCallbacks
     {
         _network.Initialize(_canvases);
 
-
         if (PhotonNetwork.IsMasterClient)
         {
             BunkerDescription bunkerDescription = new();
@@ -81,36 +78,34 @@ public class DescriptionCanvas : MonoBehaviourPunCallbacks
 
             BunkerResources bunkerRescources = new();
             bunkerRescources.Location = _data.GetData[Keys.BunkerPlace].Text[GetRandomParams(_data.GetData[Keys.BunkerPlace].Text.Count)];
-            bunkerRescources.Resources = GetInformationAboutBunker(Keys.BunkerResources, 1, 7);
-            bunkerRescources.Premises = GetInformationAboutBunker(Keys.BunkerBuildings, 4, 7);
-/*            object[] bunkerDescription = 
-            { 
-                $"{_data.GetData[Keys.BunkerName].Text[GetRandomParams(_data.GetData[Keys.BunkerName].Text.Count)]}",
-                $"{WordArea}: {_data.GetData[Keys.BunkerArea].Text[GetRandomParams(_data.GetData[Keys.BunkerArea].Text.Count)]} ì\u00B2\n" +
-                $"{WordTimeSpent}: {GetYearAddition(Random.Range(1, 13))} {GetMonthAddition(Random.Range(1, 13))}\n" +
-                $"{WordFoodSupplies} {GetYearAddition(Random.Range(1, 13))} {GetMonthAddition(Random.Range(1, 13))}"
-            };
+            bunkerRescources.Resources = GetDescriptionAboutBunker(Keys.BunkerResources, 1, 7);
+            bunkerRescources.Premises = GetDescriptionAboutBunker(Keys.BunkerBuildings, 4, 7);
 
-            string bunkerResources = $"{WordLocation}: {_data.GetData[Keys.BunkerPlace].Text[GetRandomParams(_data.GetData[Keys.BunkerPlace].Text.Count)]}\n\n" +
-                $"{WordResources}: {GetInformationAboutBunker(Keys.BunkerResources, 1, 7)}\n\n" +
-                $"{WordPremises}: {GetInformationAboutBunker(Keys.BunkerBuildings, 4, 7)}";*/
+            string bunkerDescriptionJson = JsonConvert.SerializeObject(bunkerDescription);
+            string bunkerRescourcesJson = JsonConvert.SerializeObject(bunkerRescources);
 
-            _network.RunMethodRPCSetDescriptionData(bunkerDescription, bunkerRescources);
+            _network.RunMethodRPCSetDescriptionData(bunkerDescriptionJson, bunkerRescourcesJson);
         }
     }
 
-    public void Instatiate(BunkerDescription bunkerDescription, BunkerResources bunkerResources)
+    public void Instatiate(string bunkerDescriptionJson, string bunkerResourcesJson)
     {
+        BunkerDescription bunkerDescription = JsonConvert.DeserializeObject<BunkerDescription>(bunkerDescriptionJson);
+        BunkerResources bunkerResources = JsonConvert.DeserializeObject<BunkerResources>(bunkerResourcesJson);
 
-/*        _bunkerDescription = Instantiate(_canvases.GameCanvas.DescriptionCanvas.DescriptionContent, _canvases.GameCanvas.DescriptionCanvas.ContentParent);
-        _bunkerDescription.SetInfo($"{WordBunker}: {bunkerDescription[0]}\n",
-            $"{WordArea}: {bunkerDescription[1]}", _canvases.GameCanvas.DescriptionCanvas.GetNumberFreePlaces(PhotonNetwork.PlayerList.Length));
+        _bunkerDescriptionContent = Instantiate(_descriptionContent, _contentParent);
+        _bunkerDescriptionContent.Initialize(WordNumberPlaces);
+        _bunkerDescriptionContent.SetInfo($"{WordBunker}: {bunkerDescription.Name}", $"{WordArea}: {bunkerDescription.Area} ì\u00B2\n" +
+            $"{WordTimeSpent}: {bunkerDescription.TimeSpent}\n" +
+            $"{WordFoodSupplies}: {bunkerDescription.FoodSupplies}", GetNumberPlacesInBunker(Network.GetNumberPlayers()));
 
-        _bunkerResources = Instantiate(_canvases.GameCanvas.DescriptionCanvas.DescriptionContent, _canvases.GameCanvas.DescriptionCanvas.ContentParent);
-        _bunkerResources.SetInfo(bunkerResources);*/
+        DescriptionContent resources = Instantiate(_descriptionContent, _contentParent);
+        resources.SetInfo($"{WordLocation}: {bunkerResources.Location}\n\n" +
+            $"{WordResources}: {bunkerResources.Resources}\n\n" +
+            $"{WordPremises}: {bunkerResources.Premises}");
     }
 
-    public int GetNumberFreePlaces(int numberPlayers)
+    public int GetNumberPlacesInBunker(int numberPlayers)
     {
         switch (numberPlayers)
         {
@@ -145,7 +140,7 @@ public class DescriptionCanvas : MonoBehaviourPunCallbacks
         }
     }
 
-    public string GetInformationAboutBunker(string key, int minNumber, int maxNumber)
+    public string GetDescriptionAboutBunker(string key, int minNumber, int maxNumber)
     {
         List<string> information = _data.GetData[key].Text;
         string str = "";

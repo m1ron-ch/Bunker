@@ -286,10 +286,11 @@ public class DataParams
 
 public class Skill
 {
+    public delegate void FirstSkillDeleate();
+    public delegate void SecondSkillDelegate();
+
     private string _firstSkill;
     private string _secodSkill;
-    public delegate void FirstSkillDeleate();
-    public delegate void SecondSkillDelegate(); 
 
     public string FirstSkill { get { return _firstSkill; } set { _firstSkill = value; } }
     public string SecondSkill { get { return _secodSkill; } set { _secodSkill = value; } }

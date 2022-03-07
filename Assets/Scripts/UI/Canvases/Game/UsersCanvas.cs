@@ -62,11 +62,6 @@ public class UsersCanvas : MonoBehaviourPunCallbacks
                 content.SetInfo(userParams.Title, userParams.Description);
             }*/
         }
-
-        if (PhotonNetwork.CurrentRoom.PlayerCount > _numberPlayers)
-        {
-            _numberPlayers = PhotonNetwork.CurrentRoom.PlayerCount;
-        }
     }
 
     private void AddPlayerListing(Player player)
@@ -92,6 +87,12 @@ public class UsersCanvas : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         AddPlayerListing(newPlayer);
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount > _numberPlayers)
+        {
+            _numberPlayers = PhotonNetwork.CurrentRoom.PlayerCount;
+        }
+        _canvases.GameCanvas.DescriptionCanvas.BunkerDescriptionContent.UpdateNumberPlaces(_canvases.GameCanvas.DescriptionCanvas.GetNumberPlacesInBunker(_numberPlayers));
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
