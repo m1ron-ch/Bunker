@@ -16,7 +16,6 @@ public class InformationCanvas : MonoBehaviour
 
     private Canvases _canvases;
 
-
     public void Initialize(Canvases canvases)
     {
         _canvases = canvases;

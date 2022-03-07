@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class MainMenuCanvas : MonoBehaviourPunCallbacks
 {
+    #region Fields
     [SerializeField] private UserData _userData;
     [SerializeField] private TMP_InputField _username;
     [SerializeField] private TMP_InputField _roomName;
@@ -16,6 +17,8 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_Text _points;
     [SerializeField] private TMP_Text _error;
     [SerializeField] private Button _butttonPlay;
+    [SerializeField] private TMP_Text _rulesOfTheGame;
+    #endregion
 
     private Canvases _canvases;
 
@@ -26,6 +29,7 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
 
     public bool IsGameRun { get; private set; } = false;
 
+    #region Properties
     public TMP_InputField Username { get { return _username; } set { _username = value; } }
     public TMP_InputField RoomName { get { return _roomName; } set { _roomName = value; } }
     public TMP_Text ConnectToServer { get { return _connectToServer; } set { _connectToServer = value; } }
@@ -33,11 +37,14 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
     public TMP_Text Error { get { return _error; } set { _error = value; } }
     public TMP_Text Points { get { return _points; } }
     public Button ButtonPlay { get { return _butttonPlay; } }
+    public TMP_Text RulesOfTheGame { get { return _rulesOfTheGame; } set { _rulesOfTheGame = value; } }
+    #endregion
+
 
     private void Start()
     {
         _username.text = PlayerPrefs.GetString(Settings.GetPlayerPrefsNickName);
-        //_roomName.text = "Test room";
+        _roomName.text = "Test room";
     }
 
     public void OnClickPlay()

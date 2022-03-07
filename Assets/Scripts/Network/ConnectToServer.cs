@@ -19,6 +19,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         StartCoroutine(_coroutine);
 
         PhotonNetwork.NickName = PlayerPrefs.GetString(Settings.GetPlayerPrefsNickName);
+
+        AppSettings appSettings = new AppSettings();
         PhotonNetwork.ConnectUsingSettings();
     }
 
@@ -34,6 +36,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
+        Debug.LogWarning("Disconnect");
+        //PhotonNetwork.RejoinRoom(_menuCanvas.MainMenuCanvas.RoomName.text);
         PhotonNetwork.ReconnectAndRejoin();
     }
 

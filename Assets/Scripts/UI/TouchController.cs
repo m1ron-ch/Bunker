@@ -21,12 +21,7 @@ public class TouchController : MonoBehaviour
             return;
         }
 
-        if(Input.touchCount == 2 || Input.GetKey(KeyCode.Escape))
-        {
-            _canvases.GameCanvas.Hide();
-            _canvases.MenuCanvas.Show();
-        }
-        else if (Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
 
             Touch touch = Input.GetTouch(0);

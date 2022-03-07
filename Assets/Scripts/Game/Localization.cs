@@ -26,7 +26,7 @@ public class Localization : MonoBehaviour
 
     private void Awake()
     {
-        SetLanguage(Application.systemLanguage.ToString());
+        // SetLanguage(Application.systemLanguage.ToString());
     }
 
     private void SetLanguage(string language)
@@ -44,7 +44,7 @@ public class Localization : MonoBehaviour
         }
     }
 
-    private void SetRussianLanguage()
+    public void SetRussianLanguage()
     {
         #region Menu
         #region Main Menu
@@ -53,7 +53,7 @@ public class Localization : MonoBehaviour
         _canvases.MenuCanvas.MainMenuCanvas.RoomName.placeholder.GetComponent<TMP_Text>().text = "Название комнаты...";
         _canvases.MenuCanvas.MainMenuCanvas.ButtonPlay.GetComponentInChildren<TMP_Text>().text = "Играть";
         _canvases.MenuCanvas.MainMenuCanvas.ConnectToServer.text = "Подключение к серверу";
-
+        _canvases.MenuCanvas.MainMenuCanvas.RulesOfTheGame.text = "Правила игры";
         _canvases.MenuCanvas.MainMenuCanvas.WordField = "Поле";
         _canvases.MenuCanvas.MainMenuCanvas.WordEmpty = "пустое";
         #endregion
@@ -292,7 +292,7 @@ public class Localization : MonoBehaviour
                         "Аккуратность", "хорошо занет высшую математику", "Еврей", "Негр", "Получил удар лещом", "Имеет экстрасенсорные способности", "Знает где находятся припасы семян на один гектар",
                         "Знает где находятся припасы еды на два месяца", "Основатель ЧБД", "Хорошо ладит с животными", "Инвалид", "Умеет жонглировать", "Проходил(а) курсы парикмахера",
                         "Ненавидит современную музыку", "Пережил(а) три покушения", "Обладает феноменальной памятью", "Лоуреат Нобелевской премии", "Нету", "Пристаёт к мужчинам", "Коммунист", "Знает своё имя",
-                        "Умеет дышать", "Умеет пользоваться ручкой", "Умеет открывать консервы", "Эта катастрофа- это заговор рептилий", "Верит в инопланетян", "Шизик", "Верит в Бога", "Верит в Дьявола", "Увлекается охотой",
+                        "Умеет дышать", "Умеет пользоваться ручкой", "Умеет открывать консервы", "Эта катастрофа заговор рептилий", "Верит в инопланетян", "Шизик", "Верит в Бога", "Верит в Дьявола", "Увлекается охотой",
                         "Читал(а) книгу про выживание на необитаемом острове", "Страдает морской болезнью", "Проектировал(а) этот бункер", "Может может оказать первую помощь", "Продил(а) курсы кулинарии", "Копрофил",
                         "Основатель голубая луна", "Владеет антикафе", "Может зажечь сырые дрова", "Сбежал из тюрьмы", "Победил во всех школьных квестах", "Дружит с тимати. Хлопнул бургер за здоровье собянина", "Эксперт по выживанию",
                         "Рекламировал Партию ЛДПР", "Умеет готовить жуков", "Имеет 4 млн подписчиков в инстаграме", "Однажды перепил синего лорда", "Делает вкусные дранники"
@@ -361,7 +361,7 @@ public class Localization : MonoBehaviour
                     {
                         "Аптечка", "Зимняя одежда", "Набор первой помощи", "Инструкция по выживанию в лесу", "Радио;", "Набор инструментов", "Барабаны", "Мягкие игрушки", "Аптечка первой помощи",
                         "Самогонный аппарат", "Сломанный генератор", "Генератор с бензином", "Набор сухпайков", "Набор томатных супов", "Запас воды", "Шашки", "Шахматы", "Фонарик", "Топор",
-                        "Игральные карты", $"Ружьё с обоймой на {Random.Range(1, 9)} шт.", "Бонг", "Чемодан с одеждой", "Фонарик", "Карта местности", "Крысинный яд", "Туба", "Гитара", "Аптечка",
+                        "Игральные карты", $"Ружьё с обоймой на {Random.Range(1, 9)} шт. патрон", "Бонг", "Чемодан с одеждой", "Фонарик", "Карта местности", "Крысинный яд", "Туба", "Гитара", "Аптечка",
                         "Снюс", "Баян", "Настольная лампа", "Косметичка", "Учебное пособие как выжить в бункере", "Зимняя одежда", "Гидрокостюм c баллоном воздуха"
                     }
                 }
@@ -382,7 +382,7 @@ public class Localization : MonoBehaviour
         };
     }
 
-    private void SetEnglishLanguage()
+    public void SetEnglishLanguage()
     {
         #region Menu
         #region Main Menu
@@ -391,7 +391,7 @@ public class Localization : MonoBehaviour
         _canvases.MenuCanvas.MainMenuCanvas.RoomName.placeholder.GetComponent<TMP_Text>().text = "Room name...";
         _canvases.MenuCanvas.MainMenuCanvas.ButtonPlay.GetComponentInChildren<TMP_Text>().text = "Play";
         _canvases.MenuCanvas.MainMenuCanvas.ConnectToServer.text = "Connect to server";
-
+        _canvases.MenuCanvas.MainMenuCanvas.RulesOfTheGame.text = "Rules of the game";
         _canvases.MenuCanvas.MainMenuCanvas.WordField = "Field";
         _canvases.MenuCanvas.MainMenuCanvas.WordEmpty = "empty";
         #endregion

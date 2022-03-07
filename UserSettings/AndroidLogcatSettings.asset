@@ -1,37 +1,13 @@
 {
-    "m_SelectedDeviceId": "zpqgova6eqmbjzw4",
+    "m_SelectedDeviceId": "919ab49c",
     "m_SelectedPackage": {
-        "deviceId": "zpqgova6eqmbjzw4",
+        "deviceId": "919ab49c",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 18099,
+        "processId": 19507,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 13463,
-            "exited": true
-        },
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 6121,
-            "exited": true
-        },
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 4362,
-            "exited": true
-        },
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.miui.home",
-            "processId": 2194,
-            "exited": false
-        },
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
@@ -48,18 +24,42 @@
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 12642,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 18996,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 18099,
+            "exited": true
+        },
+        {
+            "deviceId": "zpqgova6eqmbjzw4",
+            "name": "com.miui.home",
+            "processId": 2352,
+            "exited": false
+        },
+        {
+            "deviceId": "zpqgova6eqmbjzw4",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 22386,
+            "exited": false
+        },
+        {
+            "deviceId": "919ab49c",
+            "name": "com.android.settings",
+            "processId": 18399,
+            "exited": false
+        },
+        {
+            "deviceId": "919ab49c",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 19507,
             "exited": false
         }
     ],

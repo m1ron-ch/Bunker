@@ -8,7 +8,7 @@ public class Back : MonoBehaviour
 
 
 
-    public void OnClickBackInMenuFromGame()
+    public void OnClickBackFromGameInMenu()
     {
         _canvases.GameCanvas.Hide();
         _canvases.MenuCanvas.Show();
@@ -16,7 +16,7 @@ public class Back : MonoBehaviour
         Network.LeaveRoom();
     }
 
-    public void OnClickBackInMainMenuFromInformation()
+    public void OnClickBackFromInformationInMainMenu()
     {
         _canvases.MenuCanvas.InformationCanvas.Hide();
         _canvases.MenuCanvas.MainMenuCanvas.Show();
