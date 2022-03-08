@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TouchController : MonoBehaviour
+public class SwipeController : MonoBehaviour
 {
     [SerializeField] private List<Vector3> _canvasPositions = new List<Vector3>();
     [SerializeField] private Canvases _canvases;
@@ -16,11 +16,6 @@ public class TouchController : MonoBehaviour
 
     private void Update()
     {
-        if (!_canvases.MenuCanvas.MainMenuCanvas.IsGameRun)
-        {
-            return;
-        }
-
         if (Input.touchCount > 0)
         {
 

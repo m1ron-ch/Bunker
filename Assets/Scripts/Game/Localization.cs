@@ -29,7 +29,7 @@ public class Localization : MonoBehaviour
         // SetLanguage(Application.systemLanguage.ToString());
     }
 
-    private void SetLanguage(string language)
+/*    private void SetLanguage(string language)
     {
         switch (language)
         {
@@ -42,7 +42,7 @@ public class Localization : MonoBehaviour
                 SetEnglishLanguage();
                 break;    
         }
-    }
+    }*/
 
     public void SetRussianLanguage()
     {
@@ -134,9 +134,9 @@ public class Localization : MonoBehaviour
                         "Клоун", "Коллектор", "Лейтенант", "Мясник", "Наркобарон", "Онколог", "Пивовар", "Повар", "Порно актер", "Программист",
                         "Прораб", "Стример", "Строитель", "Судья", "Сушист","Тракторист", "Фармацевт", "Хакер", "Экономист", "Юрист", "Никита",
                         
-                        "Профессиональный стоящий в очереди", "Дегустатор корма для животных", "Дегустатор мороженого", "Профессиональный обниматель", "Подружка невесты",
-                        "Актер озвучивания", "Смотритель панд", "Психолог для животных", "Переворачиватель пингвинов", "Туалетный гид", "Тестер проституток", "Нюхатель подмышек"
-                        
+                        "Стояльщик в очереди", "Дегустатор корма для животных", "Дегустатор мороженого", "Профессиональный обниматель", "Подружка невесты",
+                        "Актер озвучивания", "Смотритель панд", "Психолог для животных", "Переворачиватель пингвинов", "Туалетный гид", "Тестер проституток", "Нюхатель подмышек",
+                        "Снюсоед"
                     }
                 }
             },
@@ -200,7 +200,18 @@ public class Localization : MonoBehaviour
                          new Skill { FirstSkill = "Может решить (вне зависимости от мнения других игроков) стоит ли проголосовать в раунде или пропустить голосование."},
                          new Skill { FirstSkill = "Игрок превращается в медведя и убивает одного игрока (на выбор)"},
 
-                         new Skill { FirstSkill = ""},
+                         new Skill { FirstSkill = "Делает своё здоровье \"Идеально здоров\"."},
+                         new Skill { FirstSkill = "Может прожить на животном корме."},
+                         new Skill { FirstSkill = "Перепробовал всё мороженое во всём мире. С собой взял 10 шт. \"золотого мороженого\""},
+                         new Skill { FirstSkill = "Своими обнимашками вылечит здоровье и фобию любого игрока один раз за игру"},
+                         new Skill { FirstSkill = "К свадьбе невесты поможет с выбором платья и туфель, а также помогает с выбором подарков для гостей"},
+                         new Skill { FirstSkill = "Может разговаривать десятью разными голосами"},
+                         new Skill { FirstSkill = "Будет лучшей няней для вашего ребёнка в бункере"},
+                         new Skill { FirstSkill = "Проведёт сеанс с животным и узнает что хочет. Что делает продуктивность животного в 25% больше"},
+                         new Skill { FirstSkill = "Если человек напьётся, поможет ему перевернуться или встать"},
+                         new Skill { FirstSkill = "Научит правильно экономить туалетную бумагу, а также более эффективно распределять воду в туалетном бачке"},
+                         new Skill { FirstSkill = "Знает всех девушек журнала PlayBoy"},
+                         new Skill { FirstSkill = "Подберёт индивидуальный дезодорант для вас, чтобы вы были с самым вкусным запахам в бункере"},
                     }
                 }
             },
@@ -476,7 +487,10 @@ public class Localization : MonoBehaviour
                         "Winemaker", "Miron", "Virologist", "Serviceman", "Thief", "Prostitute", "Gamer", "Genetician", "Geographer", "Maid",
                         "Trucker", "Taster", "Diplomat", "Doctor", "Milkmaid", "Jockey", "Inventor", "Engineer", "Hookah Man", "Film Director",
                         "Clown", "Collector", "Lieutenant", "Butcher", "Drug lord", "Oncologist", "Brewer", "Cook", "Porn actor", "Programmer",
-                        "Foreman", "Streamer", "Builder", "Judge", "Sushist", "Tractor Driver", "Pharmacist", "Hacker", "Economist", "Lawyer", "Nikita"
+                        "Foreman", "Streamer", "Builder", "Judge", "Sushist", "Tractor Driver", "Pharmacist", "Hacker", "Economist", "Lawyer", "Nikita",
+
+                        "Professional Lineup", "Pet Food Taster", "Ice Cream Taster", "Professional Hug", "Bridesmaid",
+                        "Voice Actor", "Panda Caretaker", "Animal Psychologist", "Penguin Flipper", "Toilet Guide", "Hooker Tester", "Armpit Sniffer"
                     }
                 }
             },

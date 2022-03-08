@@ -38,7 +38,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         Debug.LogWarning("Disconnect");
         // PhotonNetwork.RejoinRoom(_menuCanvas.MainMenuCanvas.RoomName.text);
-        // PhotonNetwork.ReconnectAndRejoin();
+        PhotonNetwork.ReconnectAndRejoin();
     }
 
     private IEnumerator Loading()
