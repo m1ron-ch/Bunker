@@ -10,6 +10,7 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
 {
     #region Fields
     [SerializeField] private UserData _userData;
+    [SerializeField] private Back _back;
     [SerializeField] private TMP_InputField _username;
     [SerializeField] private TMP_InputField _roomName;
     [SerializeField] private TMP_Text _nameOfTheGame;
@@ -68,19 +69,20 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinOrCreateRoom(_roomName.text, roomOptions, TypedLobby.Default);
     }
 
-    public void OnClickSettings()
-    {
-        _canvases.MenuCanvas.Hide();
-    }
-
     public void OnClickInformation()
     {
+        _back.CurrentCanvas = _canvases.MenuCanvas.InformationCanvas.gameObject;
+        _back.PreviousCanvas = _canvases.MenuCanvas.MainMenuCanvas.gameObject;
+
         _canvases.MenuCanvas.InformationCanvas.Show();
         _canvases.MenuCanvas.MainMenuCanvas.Hide();
     }
 
     public void OnClickAbout()
     {
+        _back.CurrentCanvas = _canvases.MenuCanvas.AboutCanvas.gameObject;
+        _back.PreviousCanvas = _canvases.MenuCanvas.MainMenuCanvas.gameObject;
+
         _canvases.MenuCanvas.Hide();
     }
 
@@ -163,12 +165,16 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
         _userData.RoomName = _roomName.text;
         IsGameRun = true;
 
+        _back.CurrentCanvas = _canvases.GameCanvas.gameObject;
+        _back.PreviousCanvas = _canvases.MenuCanvas.gameObject;
+
         _canvases.MenuCanvas.Hide();
         _canvases.GameCanvas.Show();
     }
 
     private void StartGame()
     {
+
         if (_userData.RoomName != _roomName.text || _userData.RoomName == null)
         {
             _canvases.GameCanvas.StartGame();
@@ -179,6 +185,11 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
     {
         if (_userData.RoomName != null && _userData.RoomName != _roomName.text)
         {
+            if (PhotonNetwork.InRoom)
+            {
+                PhotonNetwork.LeaveRoom();
+            }
+
             foreach (Transform child in _canvases.GameCanvas.DescriptionCanvas.ContentParent.transform)
             {
                 Destroy(child.gameObject);
