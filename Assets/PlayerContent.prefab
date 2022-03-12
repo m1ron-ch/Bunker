@@ -11,6 +11,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerContent
       objectReference: {fileID: 0}
+    - target: {fileID: 2160069280164096216, guid: 08e2b80759cd8c641983a440e52cba1f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160069280164096216, guid: 08e2b80759cd8c641983a440e52cba1f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160069280164096216, guid: 08e2b80759cd8c641983a440e52cba1f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160069280164096216, guid: 08e2b80759cd8c641983a440e52cba1f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 427.91974
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160069280164096216, guid: 08e2b80759cd8c641983a440e52cba1f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -97.82
+      objectReference: {fileID: 0}
     - target: {fileID: 8890056032348352733, guid: 08e2b80759cd8c641983a440e52cba1f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

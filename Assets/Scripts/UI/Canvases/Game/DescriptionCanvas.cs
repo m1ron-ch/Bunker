@@ -62,12 +62,11 @@ public class DescriptionCanvas : MonoBehaviour
     {
         _canvases = canvases;
         _data = data;
+        _network.Initialize(canvases);
     }
 
     private void SetInformationData()
     {
-        _network.Initialize(_canvases);
-
         if (PhotonNetwork.IsMasterClient)
         {
             BunkerDescription bunkerDescription = new();

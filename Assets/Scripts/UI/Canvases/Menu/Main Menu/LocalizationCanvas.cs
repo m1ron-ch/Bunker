@@ -37,8 +37,8 @@ public class LocalizationCanvas : MonoBehaviour
 
     private void InitializeLanguages()
     {
-        _languages.Add(new Language { Lang = "Russian", LangObj = _russian, InvokeMethod = _localization.SetRussianLanguage });
-        _languages.Add(new Language { Lang = "English", LangObj = _english, InvokeMethod = _localization.SetEnglishLanguage });
+        _languages.Add(new Language { Lang = "Russian", LangObj = _russian, InvokeMethod = _localization.SetRussianLacalization });
+        _languages.Add(new Language { Lang = "English", LangObj = _english, InvokeMethod = _localization.SetEnglishLocalization });
     }
 
     private void InitializeLanguage(string language)

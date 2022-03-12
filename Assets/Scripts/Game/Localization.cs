@@ -24,11 +24,6 @@ public class Localization : MonoBehaviour
     [SerializeField] private Canvases _canvases;
     [SerializeField] private Data _data;
 
-    private void Awake()
-    {
-        // SetLanguage(Application.systemLanguage.ToString());
-    }
-
 /*    private void SetLanguage(string language)
     {
         switch (language)
@@ -44,7 +39,7 @@ public class Localization : MonoBehaviour
         }
     }*/
 
-    public void SetRussianLanguage()
+    public void SetRussianLacalization()
     {
         #region Menu
         #region Main Menu
@@ -212,6 +207,7 @@ public class Localization : MonoBehaviour
                          new Skill { FirstSkill = "Научит правильно экономить туалетную бумагу, а также более эффективно распределять воду в туалетном бачке"},
                          new Skill { FirstSkill = "Знает всех девушек журнала PlayBoy"},
                          new Skill { FirstSkill = "Подберёт индивидуальный дезодорант для вас, чтобы вы были с самым вкусным запахам в бункере"},
+                         new Skill { FirstSkill = "Пожизненный запас снюса. На всю ситуацию в мире клал снюс"},
                     }
                 }
             },
@@ -399,7 +395,7 @@ public class Localization : MonoBehaviour
         };
     }
 
-    public void SetEnglishLanguage()
+    public void SetEnglishLocalization()
     {
         #region Menu
         #region Main Menu
@@ -490,7 +486,8 @@ public class Localization : MonoBehaviour
                         "Foreman", "Streamer", "Builder", "Judge", "Sushist", "Tractor Driver", "Pharmacist", "Hacker", "Economist", "Lawyer", "Nikita",
 
                         "Professional Lineup", "Pet Food Taster", "Ice Cream Taster", "Professional Hug", "Bridesmaid",
-                        "Voice Actor", "Panda Caretaker", "Animal Psychologist", "Penguin Flipper", "Toilet Guide", "Hooker Tester", "Armpit Sniffer"
+                        "Voice Actor", "Panda Caretaker", "Animal Psychologist", "Penguin Flipper", "Toilet Guide", "Hooker Tester", "Armpit Sniffer",
+                        "Snus"                  
                     }
                 }
             },
@@ -553,6 +550,20 @@ public class Localization : MonoBehaviour
                         new Skill { FirstSkill = "Able to calculate the amount of food in such a way that it will last for 1 more month."},
                         new Skill { FirstSkill = "Can decide (regardless of other players' opinions) whether to vote in a round or skip voting."},
                         new Skill { FirstSkill = "Player turns into a bear and kills one player (optional)"},
+
+                        new Skill { FirstSkill = "Makes your health \"Perfect Health\"."},
+                        new Skill { FirstSkill = "Can survive on animal food."},
+                        new Skill { FirstSkill = "I've tried every ice cream in the world. I took 10 \"golden ice cream\" with me"},
+                        new Skill { FirstSkill = "Cure any player's health and phobia with his hugs once per game"},
+                        new Skill { FirstSkill = "For the wedding will help with the choice of dress and shoes, as well as help with the choice of gifts for guests"},
+                        new Skill { FirstSkill = "You can try ten fiber votes"},
+                        new Skill { FirstSkill = "Will be the best babysitter for your bunker case"},
+                        new Skill { FirstSkill = "Have a session with animals and find out what they want. Which makes the animal's productivity 25% more"},
+                        new Skill { FirstSkill = "If a person gets drunk, help him roll over or stand up"},
+                        new Skill { FirstSkill = "Teach you how to properly save toilet paper, as well as more efficiently distribute water in the toilet tank"},
+                        new Skill { FirstSkill = "Knows all the girls in the Playboy magazine"},
+                        new Skill { FirstSkill = "Choose a custom deodorant for you to have the most delicious smells in the bunker"},
+                        new Skill { FirstSkill = "Lifetime supply of snus. Put snus on the whole picture of the world"},
                     }
                 }
             },

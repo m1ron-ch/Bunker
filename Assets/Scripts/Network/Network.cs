@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,29 @@ public class Network : MonoBehaviourPunCallbacks
     public void Initialize(Canvases canvases)
     {
         _canvases = canvases;
+    }
+
+    public static void JoinRoom(string name)
+    {
+        PhotonNetwork.JoinRoom(name);
+    }
+
+    public static void CreateRoom(string roomName, int numberPlayers)
+    {
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = Convert.ToByte(numberPlayers);
+
+        PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, TypedLobby.Default);
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.Log($"Room creation failed ({message})");
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        Debug.Log($"Room join failed ({message})");
     }
 
     public void RunMethodRPCChangeUserData(List<PlayerListing> listing, string title, string description)

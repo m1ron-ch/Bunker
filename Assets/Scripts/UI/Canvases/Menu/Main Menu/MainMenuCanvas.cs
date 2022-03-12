@@ -63,10 +63,7 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = _username.text;
         PlayerPrefs.SetString(Settings.GetPlayerPrefsNickName, _username.text);
 
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 20;
-
-        PhotonNetwork.JoinOrCreateRoom(_roomName.text, roomOptions, TypedLobby.Default);
+        Network.CreateRoom(_roomName.text, 16);
     }
 
     public void OnClickInformation()
@@ -83,7 +80,8 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
         _back.CurrentCanvas = _canvases.MenuCanvas.AboutCanvas.gameObject;
         _back.PreviousCanvas = _canvases.MenuCanvas.MainMenuCanvas.gameObject;
 
-        _canvases.MenuCanvas.Hide();
+        _canvases.MenuCanvas.MainMenuCanvas.Hide();
+        _canvases.MenuCanvas.AboutCanvas.Show();
     }
 
     public override void OnCreatedRoom()
@@ -96,14 +94,19 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
         ActionAfterConnectedOnRoom();
     }
 
-    public override void OnCreateRoomFailed(short returnCode, string message)
+    public void ActionAfterConnectedOnRoom()
     {
-        Debug.Log($"Room creation failed ({message})");
-    }
+        DestroyGameData();
+        StartGame();
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
-    {
-        Debug.Log($"Room join failed ({message})");
+        _userData.RoomName = _roomName.text;
+        IsGameRun = true;
+
+        _back.CurrentCanvas = _canvases.GameCanvas.gameObject;
+        _back.PreviousCanvas = _canvases.MenuCanvas.gameObject;
+
+        _canvases.MenuCanvas.Hide();
+        _canvases.GameCanvas.Show();
     }
 
     public void Initialize(Canvases canvases)
@@ -157,21 +160,6 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
         return $"{WordField} \"{errorNameField}\" {WordEmpty}";
     }
 
-    private void ActionAfterConnectedOnRoom()
-    {
-        DestroyGameData();
-        StartGame();
-
-        _userData.RoomName = _roomName.text;
-        IsGameRun = true;
-
-        _back.CurrentCanvas = _canvases.GameCanvas.gameObject;
-        _back.PreviousCanvas = _canvases.MenuCanvas.gameObject;
-
-        _canvases.MenuCanvas.Hide();
-        _canvases.GameCanvas.Show();
-    }
-
     private void StartGame()
     {
 
@@ -190,14 +178,17 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
                 PhotonNetwork.LeaveRoom();
             }
 
-            foreach (Transform child in _canvases.GameCanvas.DescriptionCanvas.ContentParent.transform)
+            _canvases.GameCanvas.DescriptionCanvas.ContentParent.DetachChildren();
+            _canvases.GameCanvas.UserCanvas.ContentParent.DetachChildren();
+
+/*            foreach (Transform child in _canvases.GameCanvas.DescriptionCanvas.ContentParent.transform)
             {
                 Destroy(child.gameObject);
             }
             foreach (Transform child in _canvases.GameCanvas.UserCanvas.ContentParent.transform)
             {
                 Destroy(child.gameObject);
-            }
+            }*/
         }
     }
 }
