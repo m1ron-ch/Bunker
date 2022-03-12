@@ -96,7 +96,7 @@ public class DescriptionCanvas : MonoBehaviour
         _bunkerDescriptionContent.Initialize(WordNumberPlaces);
         _bunkerDescriptionContent.SetInfo($"{WordBunker} {bunkerDescription.Name}\n ", $"{WordArea}: {bunkerDescription.Area} ì\u00B2\n" +
             $"{WordTimeSpent}: {bunkerDescription.TimeSpent}\n" +
-            $"{WordFoodSupplies}: {bunkerDescription.FoodSupplies}", GetNumberPlacesInBunker(Network.GetNumberPlayers()));
+            $"{WordFoodSupplies} {bunkerDescription.FoodSupplies}", GetNumberPlacesInBunker(Network.GetNumberPlayers()));
 
         DescriptionContent resources = Instantiate(_descriptionContent, _contentParent);
         resources.SetInfo($"{WordLocation}: {bunkerResources.Location}\n\n" +

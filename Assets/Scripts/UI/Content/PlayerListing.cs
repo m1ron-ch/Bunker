@@ -37,6 +37,11 @@ public class PlayerListing : MonoBehaviour
 
     public void OnClickUserInfoShowHide()
     {
+        if(_userParams.Count == 0)
+        {
+            return;
+        }
+
         if (_isShowInfo)
         {
             HideUserInfo();
