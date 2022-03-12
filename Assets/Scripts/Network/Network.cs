@@ -23,6 +23,11 @@ public class Network : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinRoom(name);
     }
 
+    public static void JoinLobyy()
+    {
+        PhotonNetwork.JoinLobby();
+    }
+
     public static void CreateRoom(string roomName, int numberPlayers)
     {
         RoomOptions roomOptions = new RoomOptions();

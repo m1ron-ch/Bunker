@@ -21,16 +21,13 @@ public class RoomListingCanvas : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("On Joined");
         _listings.Clear();
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        Debug.Log($"Count: { roomList.Count}");
         foreach (RoomInfo info in roomList)
         {
-            Debug.Log($"Room name:{info.Name}");
             if (info.RemovedFromList)
             {
                 int index = _listings.FindIndex(x => x.RoomInfo.Name == info.Name);

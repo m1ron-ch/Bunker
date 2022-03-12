@@ -28,6 +28,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         Debug.Log("Connect to Photon");
 
+        Network.JoinLobyy();
+
         _menuCanvas.MainMenuCanvas.ButtonPlay.interactable = true;
 
         StopCoroutine(_coroutine);
