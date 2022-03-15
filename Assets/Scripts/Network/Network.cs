@@ -28,10 +28,16 @@ public class Network : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
 
-    public static void CreateRoom(string roomName, int numberPlayers)
+    public static bool IsMasterClient()
+    {
+        return PhotonNetwork.IsMasterClient;
+    }
+
+    public static void JoinOrCreateRoom(string roomName, int numberPlayers)
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = Convert.ToByte(numberPlayers);
+        roomOptions.PlayerTtl = 10000;
 
         PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, TypedLobby.Default);
     }

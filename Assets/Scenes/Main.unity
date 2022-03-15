@@ -1708,7 +1708,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1886953886}
+      - m_Target: {fileID: 1812134578}
         m_TargetAssemblyTypeName: MainMenuCanvas, Assembly-CSharp
         m_MethodName: OnClickPlay
         m_Mode: 1
@@ -7912,7 +7912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _network: {fileID: 1834120473}
-  _content: {fileID: 510371111}
+  _contentParent: {fileID: 510371111}
   _playerListing: {fileID: 4402458583144918071, guid: 08e2b80759cd8c641983a440e52cba1f, type: 3}
   _userContent: {fileID: 512629860216240398, guid: 284efb8bf9517b242bf2a0424c321d64, type: 3}
   _users: {fileID: 712073608}
@@ -8004,6 +8004,7 @@ MonoBehaviour:
   _error: {fileID: 1279145852}
   _butttonPlay: {fileID: 272970127}
   _rulesOfTheGame: {fileID: 1634241951}
+  _canvases: {fileID: 0}
 --- !u!1 &1834120471
 GameObject:
   m_ObjectHideFlags: 0
@@ -8133,6 +8134,7 @@ MonoBehaviour:
   _error: {fileID: 1279145852}
   _butttonPlay: {fileID: 272970127}
   _rulesOfTheGame: {fileID: 1634241951}
+  _canvases: {fileID: 0}
 --- !u!1 &1900857726
 GameObject:
   m_ObjectHideFlags: 0

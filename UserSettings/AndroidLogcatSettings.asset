@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "zpqgova6eqmbjzw4",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 13833,
+        "processId": 4979,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,67 +11,43 @@
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 12771,
+            "processId": 13833,
             "exited": true
         },
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 13188,
+            "processId": 27025,
             "exited": true
         },
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 12642,
+            "processId": 32602,
+            "exited": true
+        },
+        {
+            "deviceId": "zpqgova6eqmbjzw4",
+            "name": "org.telegram.messenger",
+            "processId": 13626,
             "exited": true
         },
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 18996,
-            "exited": true
-        },
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 18099,
+            "processId": 14339,
             "exited": true
         },
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.miui.home",
-            "processId": 2352,
+            "processId": 2187,
             "exited": false
         },
         {
             "deviceId": "zpqgova6eqmbjzw4",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 22386,
-            "exited": false
-        },
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 19985,
-            "exited": false
-        },
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 20338,
-            "exited": false
-        },
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 1935,
-            "exited": false
-        },
-        {
-            "deviceId": "zpqgova6eqmbjzw4",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 13833,
+            "processId": 4979,
             "exited": false
         },
         {

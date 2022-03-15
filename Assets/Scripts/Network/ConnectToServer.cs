@@ -39,7 +39,6 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.LogWarning("Disconnect");
-        // PhotonNetwork.RejoinRoom(_menuCanvas.MainMenuCanvas.RoomName.text);
         PhotonNetwork.ReconnectAndRejoin();
     }
 

@@ -21,7 +21,7 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_Text _rulesOfTheGame;
     #endregion
 
-    private Canvases _canvases;
+    [SerializeField] private Canvases _canvases;
 
     #region Words For Localization
     public string WordField { get; set; }
@@ -60,10 +60,19 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
             return;
         }
 
-        PhotonNetwork.NickName = _username.text;
-        PlayerPrefs.SetString(Settings.GetPlayerPrefsNickName, _username.text);
+        if(_roomName.text == _userData.RoomName)
+        {
+            _canvases.MenuCanvas.Hide();
+            _canvases.GameCanvas.Show();
+            return;
+        }
+        else if(PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+            return;
+        }
 
-        Network.CreateRoom(_roomName.text, 16);
+        JoinOrCreateRoom();
     }
 
     public void OnClickInformation()
@@ -94,6 +103,14 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
         ActionAfterConnectedOnRoom();
     }
 
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Left Room");
+
+        if(PhotonNetwork.IsConnectedAndReady)
+            JoinOrCreateRoom();
+    }
+
     public void ActionAfterConnectedOnRoom()
     {
         DestroyGameData();
@@ -122,6 +139,14 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void JoinOrCreateRoom()
+    {
+        PhotonNetwork.NickName = _username.text;
+        PlayerPrefs.SetString(Settings.GetPlayerPrefsNickName, _username.text);
+
+        Network.JoinOrCreateRoom(_roomName.text, 16);
     }
 
     private bool IsCheckEmptyField()
@@ -171,24 +196,18 @@ public class MainMenuCanvas : MonoBehaviourPunCallbacks
 
     private void DestroyGameData()
     {
-        if (_userData.RoomName != null && _userData.RoomName != _roomName.text)
+        if (_userData.RoomName != _roomName.text && _userData.RoomName != null)
         {
-            if (PhotonNetwork.InRoom)
+            Transform[] contentParants = { _canvases.GameCanvas.DescriptionCanvas.ContentParent, _canvases.GameCanvas.UserCanvas.ContentParent,
+                _canvases.GameCanvas.UsersCanvas.ContentParent };
+            
+            foreach(Transform contentParant in contentParants)
             {
-                PhotonNetwork.LeaveRoom();
+                foreach(Transform content in contentParant)
+                {
+                    Destroy(content);
+                }
             }
-
-            _canvases.GameCanvas.DescriptionCanvas.ContentParent.DetachChildren();
-            _canvases.GameCanvas.UserCanvas.ContentParent.DetachChildren();
-
-/*            foreach (Transform child in _canvases.GameCanvas.DescriptionCanvas.ContentParent.transform)
-            {
-                Destroy(child.gameObject);
-            }
-            foreach (Transform child in _canvases.GameCanvas.UserCanvas.ContentParent.transform)
-            {
-                Destroy(child.gameObject);
-            }*/
         }
     }
 }

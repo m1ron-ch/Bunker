@@ -15,7 +15,6 @@ public class PlayerListing : MonoBehaviour
     private float _seconds = 0.5f;
 
     public Player Player { get; private set; }
-    //public List<UserParams> UserParams { get { return _userParams; } }
 
     public void Initialize(UserContent userContent)
     {
@@ -54,6 +53,16 @@ public class PlayerListing : MonoBehaviour
         _isShowInfo = !_isShowInfo;
     }
 
+    public void InstantiateUserParams()
+    {
+        foreach(GameObject obj in _userParams)
+        {
+            UserContent content = Instantiate(_userContent, gameObject.transform);
+            UserParams userParams = obj.GetComponent<UserParams>();
+            content.SetInfo(userParams.Title, userParams.Description);
+        }
+    } 
+
     private void ShowUserInfo()
     {
         foreach (GameObject userParams in _userParams)
@@ -81,7 +90,7 @@ public class PlayerListing : MonoBehaviour
         {
             t += Time.deltaTime / _seconds;
 
-            _pointer.transform.rotation = Quaternion.Lerp(_pointer.transform.rotation, Quaternion.Euler(0, 0, angelZ), Mathf.SmoothStep(0f, 1f, t));
+            _pointer.transform.rotation = Quaternion.Slerp(_pointer.transform.rotation, Quaternion.Euler(0, 0, angelZ), Mathf.SmoothStep(0f, 1f, t));
             yield return null;
         }
     }

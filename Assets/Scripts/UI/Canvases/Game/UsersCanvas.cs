@@ -8,7 +8,7 @@ using UnityEngine;
 public class UsersCanvas : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Network _network;
-    [SerializeField] private Transform _content;
+    [SerializeField] private Transform _contentParent;
     [SerializeField] private PlayerListing _playerListing;
     [SerializeField] private UserContent _userContent;
     [SerializeField] private TMP_Text _users;
@@ -19,6 +19,15 @@ public class UsersCanvas : MonoBehaviourPunCallbacks
 
     public int NumberPlayers { get { return _numberPlayers; } }
     public TMP_Text Users { get { return _users; } set { _users = value; } }
+    public Transform ContentParent { get { return _contentParent; } }
+
+    private void Start()
+    {
+        if (Network.IsMasterClient())
+        {
+
+        }
+    }
 
     public override void OnEnable()
     {
@@ -26,7 +35,7 @@ public class UsersCanvas : MonoBehaviourPunCallbacks
         GetCurrentRoomPlayers();
     }
 
-    public override void OnDisable()
+/*    public override void OnDisable()
     {
         base.OnDisable();
         for (int i = 0; i < _listings.Count; i++)
@@ -34,7 +43,7 @@ public class UsersCanvas : MonoBehaviourPunCallbacks
             Destroy(_listings[i].gameObject);
         }
         _listings.Clear();
-    }
+    }*/
 
     public void Initialize(Canvases canvases)
     {
@@ -46,21 +55,6 @@ public class UsersCanvas : MonoBehaviourPunCallbacks
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
             AddPlayerListing(player.Value);
-
-/*            PlayerListing playerListing = new PlayerListing();
-            foreach (PlayerListing listing in _listings)
-            {
-                if(listing.Player.NickName == player.Value.NickName)
-                {
-                    playerListing = listing;
-                    return;
-                }
-            }
-            foreach (UserParams userParams in playerListing.UserParams)
-            {
-                UserContent content = Instantiate(_userContent, gameObject.transform);
-                content.SetInfo(userParams.Title, userParams.Description);
-            }*/
         }
     }
 
@@ -73,7 +67,7 @@ public class UsersCanvas : MonoBehaviourPunCallbacks
         }
         else
         {
-            PlayerListing listing = Instantiate(_playerListing, _content);
+            PlayerListing listing = Instantiate(_playerListing, _contentParent);
             if (listing != null)
             {
                 listing.Initialize(_userContent);

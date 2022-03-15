@@ -41,7 +41,7 @@ public class UserCanvas : MonoBehaviour
             $"{_data.GetData[Keys.Sex].Text[_sex]} / " +
             $"{_data.GetData[Keys.Age].Age} / " +
             $"{_data.GetData[Keys.SexualOrientation].Text[GetRandomWithCoefficient(0.7f, _data.GetData[Keys.SexualOrientation].Text.Count)]}");
-        Instantiate(_translateKeywords[Keys.Health] + ":", _data.GetData[Keys.Health].Text[GetRandomWithCoefficient(0.7f, _data.GetData[Keys.Health].Text.Count)]);
+        Instantiate(_translateKeywords[Keys.Health] + ":", _data.GetData[Keys.Health].Text[GetRandomWithCoefficient(0.4f, _data.GetData[Keys.Health].Text.Count)]);
         Instantiate(_translateKeywords[Keys.Hobby] + ":", _data.GetData[Keys.Hobby].Text[GetRandomParams(_data.GetData[Keys.Hobby].Text.Count)]);
         Instantiate(_translateKeywords[Keys.CharacterTraits] + ":", _data.GetData[Keys.CharacterTraits].Text[GetRandomParams(_data.GetData[Keys.CharacterTraits].Text.Count)]);
         Instantiate(_translateKeywords[Keys.Phobia] + ":", _data.GetData[Keys.Phobia].Text[GetRandomParams(_data.GetData[Keys.Phobia].Text.Count)]);
